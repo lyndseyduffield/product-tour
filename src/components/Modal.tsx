@@ -17,6 +17,7 @@ export const Modal: React.FC<Props> = (props: Props) => {
 
   useEffect(() => {
     const selected = props.step.selector();
+    console.log("selected", selected);
     setReferenceElement(selected);
   }, []);
 
@@ -63,7 +64,6 @@ export const Modal: React.FC<Props> = (props: Props) => {
     return (
       <button
         type="button"
-        className="inline-flex w-full justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:text-sm"
         onClick={isLast ? props.handleClose : props.handleNextClick}
       >
         {isLast ? `Finish Tour` : `Next Step`}
