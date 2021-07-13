@@ -6,6 +6,7 @@ interface Props {
   currentStep: number;
   lastStep: number;
   handleNextClick: () => void;
+  handleClose: () => void;
 }
 
 export const Modal: React.FC<Props> = (props: Props) => {
@@ -15,6 +16,19 @@ export const Modal: React.FC<Props> = (props: Props) => {
     const selected = props.step.selector();
     setSelectedElement(selected);
   }, []);
+
+  const ModalAction = () => {
+    const isLast = props.currentStep === props.lastStep;
+    return (
+      <button
+        type="button"
+        className="inline-flex w-full justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:text-sm"
+        onClick={() => (isLast ? props.handleClose() : props.handleNextClick())}
+      >
+        {isLast ? `Finish Tour` : `Next Step`}
+      </button>
+    );
+  };
 
   return selectedElement ? (
     <div
@@ -58,13 +72,7 @@ export const Modal: React.FC<Props> = (props: Props) => {
             </p>
           </div>
           <div className="mt-4 sm:mt-5">
-            <button
-              type="button"
-              className="inline-flex w-full justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:text-sm"
-              onClick={() => props.handleNextClick()}
-            >
-              Next Step
-            </button>
+            <ModalAction />
           </div>
         </div>
       </div>

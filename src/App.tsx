@@ -8,10 +8,7 @@ export interface Props {
 
 export const App: React.FC<Props> = ({ tour }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-
-  const Header = () => <h1 className="text-xl text-pink-300">Product Tour</h1>;
-
-  const firstStep: TourStep | null = tour.steps[0];
+  const [completed, setCompleted] = useState<boolean>(false);
 
   const handleNextClick = () => {
     if (currentIndex < tour.steps.length - 1) {
@@ -19,15 +16,22 @@ export const App: React.FC<Props> = ({ tour }) => {
     }
   };
 
-  return firstStep ? (
-    <>
-      <Header />
+  const handleClose = () => {
+    setCompleted(true);
+  };
+
+  const TourModal = () => {
+    const step: TourStep | null = tour.steps[currentIndex];
+    return step ? (
       <Modal
         currentStep={currentIndex + 1}
         lastStep={tour.steps.length}
-        step={firstStep}
+        step={step}
         handleNextClick={handleNextClick}
+        handleClose={handleClose}
       />
-    </>
-  ) : null;
+    ) : null;
+  };
+
+  return completed ? null : <TourModal />;
 };
