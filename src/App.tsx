@@ -1,26 +1,19 @@
-import { useEffect, useState } from "react";
-import { render } from "react-dom";
+import { Modal } from "./components/Modal";
+import { Tour, TourStep } from "./models/Tour";
 
-export const runApp = () => {
-  render(<App />, document.getElementsByTagName("body")[0]);
-};
+export interface Props {
+  tour: Tour;
+}
 
-const App: React.FC<Record<string, unknown>> = () => {
-  const [initialized, setInitialized] = useState<boolean>(false);
+export const App: React.FC<Props> = ({ tour }) => {
+  const Header = () => <h1 className="text-xl text-pink-300">Product Tour</h1>;
 
-  useEffect(() => {
-    const link: HTMLLinkElement = document.createElement("link");
-    link.setAttribute("rel", "stylesheet");
-    link.setAttribute(
-      "href",
-      "https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
-    );
-    const head: HTMLHeadElement = document.getElementsByTagName("head")[0];
-    head.appendChild(link);
-    setTimeout(() => setInitialized(true), 500);
-  }, []);
+  const firstStep: TourStep | null = tour.steps[0];
 
-  const header = <h1 className="text-xl text-pink-300">Product Tour</h1>;
-
-  return initialized ? header : null;
+  return firstStep ? (
+    <>
+      <Header />
+      <Modal step={firstStep} />
+    </>
+  ) : null;
 };
