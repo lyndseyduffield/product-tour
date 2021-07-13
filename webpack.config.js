@@ -16,7 +16,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'run-product-tour.js',
+    filename: 'run-tour.js',
     library: "productTour",
   },
 };

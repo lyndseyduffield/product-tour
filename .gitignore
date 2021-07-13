@@ -104,4 +104,4 @@ typings/
 
 # App specific 
 dist/*
-!dist/run-product-tour.js
+!dist/run-tour.js

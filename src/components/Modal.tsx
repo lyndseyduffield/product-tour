@@ -75,7 +75,7 @@ export const Modal: React.FC<Props> = (props: Props) => {
     <>
       <div
         id="product-tour-tooltip"
-        className="bg-gray-200 rounded-lg px-4 pt-5 pb-4 text-left shadow-xl transform transition-all"
+        className="bg-gray-200 max-w-sm rounded-lg px-4 pt-5 pb-4 text-left shadow-xl transform transition-all"
         ref={setPopperElement}
         style={styles.popper}
         {...attributes.popper}

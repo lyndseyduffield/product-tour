@@ -8,7 +8,7 @@ First, load the product tour script:
 
 ```js
 {
-  const js = "product-tour.js";
+  const js = "run-tour.js";
   const script = document.createElement("script");
   script.type = "text/javascript";
   script.src =
