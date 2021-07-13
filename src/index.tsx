@@ -14,6 +14,12 @@ export const runApp = (tour: Tour) => {
   const head: HTMLHeadElement = document.getElementsByTagName("head")[0];
   head.appendChild(link);
 
+  // add some popper styles to the head
+  // TODO: bundle our own stylesheet
+  const style: HTMLStyleElement = document.createElement("style");
+  style.appendChild(document.createTextNode(popperStyles));
+  head.appendChild(style);
+
   // create new "root" for our app to live in
   // otherwise, selecting the body overrides the user's app
   const root: HTMLDivElement = document.createElement("div");
@@ -23,6 +29,43 @@ export const runApp = (tour: Tour) => {
 
   render(<App tour={tour} />, root);
 };
+
+// This is a terrible hack!
+const popperStyles = `
+  #product-tour-arrow,
+  #product-tour-arrow::before {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: inherit;
+  }
+
+  #product-tour-arrow {
+    visibility: hidden;
+  }
+
+  #product-tour-arrow::before {
+    visibility: visible;
+    content: "";
+    transform: rotate(45deg);
+  }
+
+  #product-tour-tooltip[data-popper-placement^="top"] > #product-tour-arrow {
+    bottom: -4px;
+  }
+
+  #product-tour-tooltip[data-popper-placement^="bottom"] > #product-tour-arrow {
+    top: -4px;
+  }
+
+  #product-tour-tooltip[data-popper-placement^="left"] > #product-tour-arrow {
+    right: -4px;
+  }
+
+  #product-tour-tooltip[data-popper-placement^="right"] > #product-tour-arrow {
+    left: -4px;
+    }
+`;
 
 const demoTour: Tour = {
   id: 0,
@@ -38,7 +81,7 @@ const demoTour: Tour = {
       title: "My Second Step",
       description: "Is this thing on??????",
       selector: () => {
-        return document.getElementById("big-div");
+        return document.getElementById("bigger-div");
       },
     },
   ],

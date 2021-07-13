@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { usePopper } from "react-popper";
 import { TourStep } from "../models/Tour";
 
 interface Props {
@@ -10,72 +11,113 @@ interface Props {
 }
 
 export const Modal: React.FC<Props> = (props: Props) => {
-  const [selectedElement, setSelectedElement] = useState<Element | null>(null);
+  const [referenceElement, setReferenceElement] = useState(null);
+  const [popperElement, setPopperElement] = useState(null);
+  const [arrowElement, setArrowElement] = useState(null);
 
   useEffect(() => {
     const selected = props.step.selector();
-    setSelectedElement(selected);
+    setReferenceElement(selected);
   }, []);
 
-  const ModalAction = () => {
+  const { styles, attributes } = usePopper(referenceElement, popperElement, {
+    modifiers: [
+      { name: "arrow", options: { element: arrowElement } },
+      {
+        name: "offset",
+        options: {
+          offset: [0, 8],
+        },
+      },
+    ],
+  });
+
+  const ModalBody = () => (
+    <>
+      <div>
+        <div className="mt-3 text-center sm:mt-5">
+          <h3
+            className="text-xl leading-6 font-medium text-gray-900"
+            id="modal-title"
+          >
+            {props.step.title}
+          </h3>
+          <div className="mt-2">
+            <p className="text-md text-gray-500">{props.step.description}</p>
+          </div>
+        </div>
+      </div>
+      <div className="mt-4">
+        <p className="text-center text-sm font-extralight text-opacity-75 text-gray-500">
+          {props.currentStep} of {props.lastStep}
+        </p>
+      </div>
+      <div className="mt-4 sm:mt-5">
+        <ModalButton />
+      </div>
+    </>
+  );
+
+  const ModalButton = () => {
     const isLast = props.currentStep === props.lastStep;
     return (
       <button
         type="button"
         className="inline-flex w-full justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:text-sm"
-        onClick={() => (isLast ? props.handleClose() : props.handleNextClick())}
+        onClick={isLast ? props.handleClose : props.handleNextClick}
       >
         {isLast ? `Finish Tour` : `Next Step`}
       </button>
     );
   };
 
-  return selectedElement ? (
+  return (
+    <>
+      <div
+        id="product-tour-tooltip"
+        className="bg-gray-700 rounded-lg px-4 pt-5 pb-4 text-left shadow-xl transform transition-all"
+        ref={setPopperElement}
+        style={styles.popper}
+        {...attributes.popper}
+      >
+        <ModalBody />
+        <div
+          data-popper-arrow
+          id="product-tour-arrow"
+          className="bg-gray-700"
+          ref={setArrowElement}
+          style={styles.arrow}
+        />
+      </div>
+    </>
+  );
+};
+
+/*
+  const Backdrop = () => (
+    <div
+      className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+      aria-hidden="true"
+    ></div>
+  );
+
+  const ModalContent = () => (
+  );
+
+  return (
     <div
       className="fixed z-10 inset-0 overflow-y-auto"
       aria-labelledby="modal-title"
       role="dialog"
       aria-modal="true"
+      ref={setPopperElement}
+      style={styles.popper}
+      {...attributes.popper}
     >
-      <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-        <div
-          className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
-          aria-hidden="true"
-        ></div>
-
-        <span
-          className="hidden sm:inline-block sm:align-middle sm:h-screen"
-          aria-hidden="true"
-        >
-          &#8203;
-        </span>
-
-        <div className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
-          <div>
-            <div className="mt-3 text-center sm:mt-5">
-              <h3
-                className="text-xl leading-6 font-medium text-gray-900"
-                id="modal-title"
-              >
-                {props.step.title}
-              </h3>
-              <div className="mt-2">
-                <p className="text-md text-gray-500">
-                  {props.step.description}
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="mt-4">
-            <p className="text-center text-sm font-extralight text-opacity-75 text-gray-500">
-              {props.currentStep} of {props.lastStep}
-            </p>
-          </div>
-          <div className="mt-4 sm:mt-5">
-            <ModalAction />
-          </div>
-        </div>
-      </div>
+      <ModalContent />
+      <div ref={setArrowElement} style={styles.arrow} data-popper-arrow />
     </div>
-  ) : null;
+  );
 };
+
+*/
