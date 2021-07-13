@@ -1,0 +1,26 @@
+{
+  "name": "product-tour",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Embed a product tour, as a script, on any website.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lyndseyduffield/product-tour.git"
+  },
+  "author": "Lyndsey Duffield",
+  "license": "MIT",
+  "homepage": "https://github.com/lyndseyduffield/product-tour#readme",
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.14",
+    "@types/react-dom": "^17.0.9",
+    "@typescript-eslint/eslint-plugin": "^4.28.3",
+    "@typescript-eslint/parser": "^4.28.3",
+    "eslint": "^7.30.0",
+    "eslint-plugin-react": "^7.24.0",
+    "typescript": "^4.3.5"
+  }
+}
