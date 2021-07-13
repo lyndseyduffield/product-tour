@@ -17,7 +17,6 @@ export const Modal: React.FC<Props> = (props: Props) => {
 
   useEffect(() => {
     const selected = props.step.selector();
-    console.log("selected", selected);
     setReferenceElement(selected);
   }, []);
 
@@ -75,7 +74,7 @@ export const Modal: React.FC<Props> = (props: Props) => {
     <>
       <div
         id="product-tour-tooltip"
-        className="bg-gray-700 rounded-lg px-4 pt-5 pb-4 text-left shadow-xl transform transition-all"
+        className="bg-gray-200 rounded-lg px-4 pt-5 pb-4 text-left shadow-xl transform transition-all"
         ref={setPopperElement}
         style={styles.popper}
         {...attributes.popper}
@@ -84,7 +83,7 @@ export const Modal: React.FC<Props> = (props: Props) => {
         <div
           data-popper-arrow
           id="product-tour-arrow"
-          className="bg-gray-700"
+          className="bg-gray-200"
           ref={setArrowElement}
           style={styles.arrow}
         />
@@ -92,32 +91,3 @@ export const Modal: React.FC<Props> = (props: Props) => {
     </>
   );
 };
-
-/*
-  const Backdrop = () => (
-    <div
-      className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
-      aria-hidden="true"
-    ></div>
-  );
-
-  const ModalContent = () => (
-  );
-
-  return (
-    <div
-      className="fixed z-10 inset-0 overflow-y-auto"
-      aria-labelledby="modal-title"
-      role="dialog"
-      aria-modal="true"
-      ref={setPopperElement}
-      style={styles.popper}
-      {...attributes.popper}
-    >
-      <ModalContent />
-      <div ref={setArrowElement} style={styles.arrow} data-popper-arrow />
-    </div>
-  );
-};
-
-*/

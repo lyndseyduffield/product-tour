@@ -16,7 +16,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'tour.js',
+    filename: '[name].[contenthash].js',
     library: "tour",
   },
 };
