@@ -1,5 +1,5 @@
 import { render } from "react-dom";
-import { App, Props } from "./App";
+import { App } from "./App";
 import { Tour } from "./models/Tour";
 
 export const runApp = (tour: Tour) => {
@@ -21,8 +21,7 @@ export const runApp = (tour: Tour) => {
   const body: HTMLBodyElement = document.getElementsByTagName("body")[0];
   body.appendChild(root);
 
-  const props: Props = { tour };
-  render(App(props), root);
+  render(<App tour={tour} />, root);
 };
 
 const demoTour: Tour = {
@@ -31,6 +30,13 @@ const demoTour: Tour = {
     {
       title: "My First Step",
       description: "This is my very first step. Whoopee?",
+      selector: () => {
+        return document.getElementById("big-div");
+      },
+    },
+    {
+      title: "My Second Step",
+      description: "Is this thing on??????",
       selector: () => {
         return document.getElementById("big-div");
       },

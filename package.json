@@ -11,8 +11,8 @@
   "license": "MIT",
   "homepage": "https://github.com/lyndseyduffield/product-tour#readme",
   "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
   },
   "devDependencies": {
     "@types/react": "^17.0.14",
