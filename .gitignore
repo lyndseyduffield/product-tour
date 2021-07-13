@@ -103,4 +103,5 @@ typings/
 .tern-port
 
 # App specific 
-dist/index.html
+dist/*
+!dist/product-tour.js

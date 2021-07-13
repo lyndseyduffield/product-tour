@@ -3,9 +3,6 @@
   "private": true,
   "version": "0.0.1",
   "description": "Embed a product tour, as a script, on any website.",
-  "scripts": {
-    "build": "rm dist/*.js dist/*.txt && webpack --mode=production"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lyndseyduffield/product-tour.git"

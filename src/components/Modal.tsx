@@ -37,18 +37,18 @@ export const Modal: React.FC<Props> = (props: Props) => {
       <div>
         <div className="mt-3 text-center sm:mt-5">
           <h3
-            className="text-xl leading-6 font-medium text-gray-900"
+            className="text-xl leading-6 font-medium text-black"
             id="modal-title"
           >
             {props.step.title}
           </h3>
           <div className="mt-2">
-            <p className="text-md text-gray-500">{props.step.description}</p>
+            <p className="text-md text-gray-900">{props.step.description}</p>
           </div>
         </div>
       </div>
       <div className="mt-4">
-        <p className="text-center text-sm font-extralight text-opacity-75 text-gray-500">
+        <p className="text-center text-sm font-extralight text-opacity-75 text-gray-700">
           {props.currentStep} of {props.lastStep}
         </p>
       </div>
