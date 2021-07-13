@@ -104,4 +104,4 @@ typings/
 
 # App specific 
 dist/*
-!dist/bundle.js
+!dist/tour.js

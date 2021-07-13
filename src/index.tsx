@@ -2,7 +2,7 @@ import { render } from "react-dom";
 import { App } from "./App";
 import { Tour } from "./models/Tour";
 
-export const runApp = (tour: Tour) => {
+export const runTour = (tour: Tour) => {
   // install tailwind css
   // TODO: bundle tailwind css in the script
   const link: HTMLLinkElement = document.createElement("link");
@@ -66,25 +66,3 @@ const popperStyles = `
     left: -4px;
     }
 `;
-
-const demoTour: Tour = {
-  id: 0,
-  steps: [
-    {
-      title: "My First Step",
-      description: "This is my very first step. Whoopee?",
-      selector: () => {
-        return document.getElementById("big-div");
-      },
-    },
-    {
-      title: "My Second Step",
-      description: "Is this thing on??????",
-      selector: () => {
-        return document.getElementById("bigger-div");
-      },
-    },
-  ],
-};
-
-runApp(demoTour);
