@@ -8,7 +8,7 @@ First, load the product tour script:
 
 ```js
 {
-  const js = "run-tour.js";
+  const js = "makenna-tour.js";
   const script = document.createElement("script");
   script.type = "text/javascript";
   script.src =
@@ -37,6 +37,13 @@ const demoTour = {
         "Are you a morning person or a night owl? Luckily, you don't have to choose with Meeshkan!",
       selector: () => {
         return document.getElementsByClassName("chakra-button css-1jeq6on")[0];
+      },
+    },
+    {
+      title: "Changelog",
+      decription: "this is a changelog",
+      selector: () => {
+        return document.getElementsByClassName("chakra-link css-f4h6uy")[0];
       },
     },
   ],

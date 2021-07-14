@@ -7,6 +7,9 @@
     "type": "git",
     "url": "git+https://github.com/lyndseyduffield/product-tour.git"
   },
+  "scripts": {
+    "build": "rm dist/*.js dist/*.txt && webpack --mode=production"
+  },
   "author": "Lyndsey Duffield",
   "license": "MIT",
   "homepage": "https://github.com/lyndseyduffield/product-tour#readme",

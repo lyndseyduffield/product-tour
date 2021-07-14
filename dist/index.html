@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Product Tour</title>
+  </head>
+  <body className="bg-gray-700">
+    <div id="big-div" style="width: 50px; background-color: red">
+      FEATURE ONE
+    </div>
+    <div
+      id="bigger-div"
+      style="
+        margin-left: 200px;
+        margin-top: 200px;
+        width: 200px;
+        background-color: red;
+      "
+    >
+      FEATURE TWO
+    </div>
+    <script src="./product-tour.js"></script>
+    <script>
+      const demoTour = {
+        id: 0,
+        steps: [
+          {
+            title: "My First Step",
+            description: "This is my very first step. Whoopee?",
+            selector: () => {
+              return document.getElementById("big-div");
+            },
+          },
+          {
+            title: "My Second Step",
+            description: "Is this thing on??????",
+            selector: () => {
+              return document.getElementById("bigger-div");
+            },
+          },
+        ],
+      };
+      window.productTour.runTour(demoTour);
+    </script>
+  </body>
+</html>
