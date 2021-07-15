@@ -27,6 +27,24 @@ const demoTour: Tour = {
       description: "We have light and dark mode!",
       selector: `button[aria-label="Light/Dark mode toggle"]`,
     },
+    {
+      title: "Roadmap",
+      description:
+        "This roadmap is directly connected to our project management software. Our roadmap is serious, not just for show!",
+      selector: `nav a[href="/roadmap/"]`,
+      beforeStep: () => {
+        const dropdown: HTMLElement = document.querySelector(
+          `nav div button[aria-haspopup="dialog"]`
+        );
+        dropdown.focus();
+      },
+      afterStep: (selected) => {
+        selected.click();
+        setTimeout(() => {
+          document.getElementById("email").focus();
+        }, 200);
+      },
+    },
   ],
 };
 

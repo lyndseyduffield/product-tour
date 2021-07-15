@@ -25,6 +25,9 @@ export const Modal: React.FC<Props> = (props: Props) => {
     if (colorMode) {
       setColorMode(colorMode as ColorMode);
     }
+    if (props.step.beforeStep) {
+      props.step.beforeStep();
+    }
     const selected = document.querySelector(props.step.selector);
     setReferenceElement(selected);
   }, []);
@@ -41,6 +44,20 @@ export const Modal: React.FC<Props> = (props: Props) => {
     ],
   });
 
+  const isLast = props.currentStep === props.lastStep;
+
+  const handleClick = () => {
+    if (props.step.afterStep) {
+      props.step.afterStep(referenceElement);
+    }
+
+    if (isLast) {
+      props.handleClose();
+    } else {
+      props.handleNextClick();
+    }
+  };
+
   const ModalBody = () => (
     <>
       <div id="product-tour-title">{props.step.title}</div>
@@ -55,12 +72,8 @@ export const Modal: React.FC<Props> = (props: Props) => {
   );
 
   const ModalButton = () => {
-    const isLast = props.currentStep === props.lastStep;
     return (
-      <button
-        id="product-tour-button"
-        onClick={isLast ? props.handleClose : props.handleNextClick}
-      >
+      <button id="product-tour-button" onClick={handleClick}>
         {isLast ? `Finish Tour` : `Next Step`}
       </button>
     );
