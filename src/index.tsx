@@ -47,7 +47,7 @@ const demoTour: Tour = {
         selected.click();
         setTimeout(() => {
           document.getElementById("email").focus();
-        }, 200);
+        }, 500);
       },
     },
   ],
