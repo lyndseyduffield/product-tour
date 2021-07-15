@@ -32,6 +32,7 @@ const demoTour: Tour = {
       description:
         "This roadmap is directly connected to our project management software. Our roadmap is serious, not just for show!",
       selector: `nav a[href="/roadmap/"]`,
+      placement: "right",
       beforeStep: () => {
         const dropdown: HTMLElement = document.querySelector(
           `nav div button[aria-haspopup="dialog"]`

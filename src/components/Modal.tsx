@@ -79,6 +79,10 @@ export const Modal: React.FC<Props> = (props: Props) => {
     );
   };
 
+  const placement = props.step.placement
+    ? { "data-popper-placement": props.step.placement }
+    : {};
+
   return (
     <>
       <div
@@ -87,6 +91,7 @@ export const Modal: React.FC<Props> = (props: Props) => {
         ref={setPopperElement}
         style={{ ...styles.popper }}
         {...attributes.popper}
+        {...placement}
       >
         <ModalBody />
         <div

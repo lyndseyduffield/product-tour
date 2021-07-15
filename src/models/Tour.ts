@@ -9,4 +9,5 @@ export interface TourStep {
   description: string;
   beforeStep?: () => void;
   afterStep?: (selected: HTMLElement | null) => void;
+  placement?: string;
 }
