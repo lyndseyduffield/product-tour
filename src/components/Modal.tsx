@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { usePopper } from "react-popper";
+import { LOCAL_STORAGE_COLOR_MODE_KEY } from "../constants";
+import { ColorMode } from "../models/Color";
 import { TourStep } from "../models/Tour";
 
 interface Props {
@@ -16,6 +18,9 @@ export const Modal: React.FC<Props> = (props: Props) => {
   const [arrowElement, setArrowElement] = useState(null);
 
   useEffect(() => {
+    const colorMode: ColorMode = JSON.parse(
+      localStorage.getItem(LOCAL_STORAGE_COLOR_MODE_KEY)
+    );
     const selected = props.step.selector();
     setReferenceElement(selected);
   }, []);
