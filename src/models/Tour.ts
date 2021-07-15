@@ -4,7 +4,7 @@ export interface Tour {
 }
 
 export interface TourStep {
-  selector: () => Element;
+  selector: string;
   title: string;
   description: string;
 }

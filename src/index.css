@@ -8,13 +8,13 @@
   max-width: 400px;
   border-radius: 0.5rem;
   line-height: 1.4;
-  color: #14181f;
-  background-color: white;
+  color: #cbd3e0;
+  background-color: #14181f;
 }
 
 #product-tour-tooltip[data-color-mode="dark"] {
-  color: #cbd3e0;
-  background-color: #14181f;
+  color: #14181f;
+  background-color: white;
 }
 
 #product-tour-title {

@@ -20,16 +20,12 @@ const demoTour: Tour = {
     {
       title: "Sign up",
       description: "You can sign up!",
-      selector: () => {
-        return document.getElementsByClassName("chakra-button css-1riw45y")[0];
-      },
+      selector: `a[href="https://app.meeshkan.com"]`,
     },
     {
       title: "Light Dark",
       description: "We have light and dark mode!",
-      selector: () => {
-        return document.getElementsByClassName("chakra-button css-1jeq6on")[0];
-      },
+      selector: `button[aria-label="Light/Dark mode toggle"]`,
     },
   ],
 };

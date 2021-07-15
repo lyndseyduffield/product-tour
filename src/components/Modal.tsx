@@ -25,7 +25,7 @@ export const Modal: React.FC<Props> = (props: Props) => {
     if (colorMode) {
       setColorMode(colorMode as ColorMode);
     }
-    const selected = props.step.selector();
+    const selected = document.querySelector(props.step.selector);
     setReferenceElement(selected);
   }, []);
 

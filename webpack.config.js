@@ -21,7 +21,7 @@ module.exports = {
 	},
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'makenna-tour-2.js',
+    filename: 'makenna-tour-3.js',
     library: "productTour",
   },
 };
