@@ -20,7 +20,7 @@ const demoTour: Tour = {
     {
       title: "Sign up",
       description: "You can sign up!",
-      selector: `a[href="https://app.meeshkan.com"]`,
+      selector: `main.section.div.a[href="https://app.meeshkan.com"]`,
     },
     {
       title: "Light Dark",
