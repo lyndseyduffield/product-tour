@@ -40,6 +40,10 @@ const demoTour: Tour = {
         dropdown.focus();
       },
       afterStep: (selected) => {
+        const dropdown: HTMLElement = document.querySelector(
+          `nav div button[aria-haspopup="dialog"]`
+        );
+        dropdown.blur();
         selected.click();
         setTimeout(() => {
           document.getElementById("email").focus();
