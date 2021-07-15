@@ -13,3 +13,25 @@ export const runTour = (tour: Tour) => {
 
   render(<App tour={tour} />, root);
 };
+
+const demoTour: Tour = {
+  id: 0,
+  steps: [
+    {
+      title: "Sign up",
+      description: "You can sign up!",
+      selector: () => {
+        return document.getElementsByClassName("chakra-button css-1riw45y")[0];
+      },
+    },
+    {
+      title: "Light Dark",
+      description: "We have light and dark mode!",
+      selector: () => {
+        return document.getElementsByClassName("chakra-button css-1jeq6on")[0];
+      },
+    },
+  ],
+};
+
+runTour(demoTour);
